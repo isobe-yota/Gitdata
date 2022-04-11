@@ -90,7 +90,18 @@ public class Program
         }
         else
         {
-
+            int i=0;
+            foreach (var n in mDictionary.Keys)
+            {
+                if (mDictionary[n].Contains(key))
+                {
+                    Console.WriteLine(n + " :" + key);
+                    i++;
+                }
+            }
+            if(i==0){
+                Console.WriteLine("お探しのワードでは検索できませんでした");
+            }
         }
     }
 
@@ -125,13 +136,9 @@ public class Program
         sw.Stop();
         Console.WriteLine("■処理にかかった時間");
         TimeSpan ts = sw.Elapsed;
-        Console.WriteLine($"　{sw.ElapsedMilliseconds}ミリ秒");
+        Console.WriteLine($"  {sw.ElapsedMilliseconds}ミリ秒");
         Console.WriteLine("入力して");
         string words = Console.ReadLine();
-        Console.WriteLine("今入力した文字: {0}");
         m.Search(words);
-        Console.ReadLine();
-
-        Console.WriteLine("hello");
     }
 }
