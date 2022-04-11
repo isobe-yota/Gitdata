@@ -96,14 +96,23 @@ public class Program
 
     static void Main()
     {
+        var sw = new System.Diagnostics.Stopwatch();
+        sw.Start();
+
         var m = new Program();
         m.Add("哺乳類", "人");
         m.Add("哺乳類", "クジラ");
         m.Add("哺乳類", "カンガルー");
         m.Add("魚類", "イワシ");
 
-　　　　//哺乳類検索したとき
+        for (int i = 0; i < 100000; i++)
+        {
+            int num = i;
+            m.Add(num.ToString(), num.ToString() + "value");
+        }
+        //哺乳類検索したとき
         m.Search("哺乳類");
+        m.Search("2");
         // //辞書全データ
         // foreach (var pair in mDictionary)
         // {
@@ -113,12 +122,16 @@ public class Program
         //     }
         // }
 
+        sw.Stop();
+        Console.WriteLine("■処理にかかった時間");
+        TimeSpan ts = sw.Elapsed;
+        Console.WriteLine($"　{sw.ElapsedMilliseconds}ミリ秒");
         Console.WriteLine("入力して");
         string words = Console.ReadLine();
         Console.WriteLine("今入力した文字: {0}");
         m.Search(words);
         Console.ReadLine();
 
-         Console.WriteLine("hello");
+        Console.WriteLine("hello");
     }
 }
